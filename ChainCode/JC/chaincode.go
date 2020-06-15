@@ -59,7 +59,9 @@ func (cc *Chaincode) misbehaviorJudge(stub shim.ChaincodeStubInterface, params [
 	}
 
 	response := shim.Success([]byte("success"))
-	response.Message = string(time.Duration(penalty))
-
+	msg := strconv.Itoa(penalty) + "m"
+	response.Message = msg
+	fmt.Println("testmsg: " + msg)
+	
 	return response
 }
